@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahlzeit</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="mahlzeit.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Sans:ital,
+        opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap"
+        rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1> 🔴Mahlzeit</h1>
+        <div id="oben">
+            <p>Entdecken</p>
+            <p>Kategorien</p>
+            <p>Zufallrezept</p>
+        </div>
+    </header>
+    <hr>
+    <main>
+        <div id="textoben">
+            <p id="ueberschrift1">was kochen wir heute?</p>
+            <p id="info1">Suche nach einem Gericht oder lass dich überrachen.</p>
+            <div id="suchbox">
+                <div id="linesuch1">
+                    <input type="search" id="hhh" placeholder="  z.B. Arrabiata" name="suchen">
+                    <button id="suchbutton">🔍 Suchen</button>
+                </div>
+                <button id="uberrasch">🔀 überrach mich</button>
+            </div>
+            <div id="untertasten">
+                <button id="taste1" class="but">Alle</button>
+                <button id="taste2" class="but">Beef</button>
+                <button id="taste3" class="but">Chicken</button>
+                <button id="taste4" class="but">Dessert</button>
+                <button id="taste5" class="but">Pasta</button>
+                <button id="taste6" class="but">Seafood</button>
+                <button id="taste7" class="but">Vegetarian</button>
+            </div>
+            <p id="ueberschrift2">Gerichte</p>
+        </div>
+        <div id="kontainer"></div>
+    </main>
+    <footer>
+        <br>
+        <hr>
+        <p id="ende">Rezeptdaten von <a href="https://www.themealdb.com/" target="_blank">TheMealDB.com</a></p>
+    </footer>
+</body>
+</html>
