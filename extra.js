@@ -55,9 +55,9 @@ function gerichtinfo(url) {
                 const film = document.createElement("a")
                 film.textContent = " ▶ Video ansehen"
                 film.className = "film"
-                film.target = "_blank"
                 if(ele.strYoutube){
                     film.href = ele.strYoutube
+                    film.target = "_blank"
                 }
                 tasten.append(film)
                 const anderRezept = document.createElement("button")
