@@ -6,13 +6,11 @@ const tasten = document.querySelector("#tasten")
 const zutaten = document.querySelector("#zutaten")
 const zubereitung = document.querySelector("#zubereitung")
 const kontainer2 = document.querySelector("#inhalt")
-console.log("Detailseite geladen");
 const urlParams = new URLSearchParams(window.location.search);
-const artikelname = urlParams.get("strMeal");
-console.log("Gesuchte name:", artikelname);
+const artikelid = urlParams.get("idMeal");
 gerichtZeigen()
 function gerichtZeigen() {
-    let ur = `https://www.themealdb.com/api/json/v1/1/search.php?s=${artikelname}`
+    let ur = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${artikelid}`
     gerichtinfo(ur)
 }
 function gerichtinfo(url) {
@@ -31,10 +29,9 @@ function gerichtinfo(url) {
             }
             data.meals.forEach(ele => {
                 const linkzurueck = document.createElement("a")
-                linkzurueck.className ="zurueck"
+                linkzurueck.className = "zurueck"
                 linkzurueck.href = "index.html"
                 linkzurueck.textContent = "← Zurück zu Übersicht"
-                linkzurueck
                 const image = document.createElement("img")
                 image.src = ele.strMealThumb
                 image.alt = ele.strMeal
@@ -52,19 +49,20 @@ function gerichtinfo(url) {
                 name.className = "gerichtname"
                 name.textContent = ele.strMeal
                 title.append(name)
-                const film = document.createElement("a")
-                film.textContent = " ▶ Video ansehen"
-                film.className = "film"
-                if(ele.strYoutube){
+                if (ele.strYoutube) {
+                    const film = document.createElement("a")
+                    film.textContent = " ▶ Video ansehen"
+                    film.className = "film"
                     film.href = ele.strYoutube
                     film.target = "_blank"
+                    tasten.append(film)
                 }
-                tasten.append(film)
+                
                 const anderRezept = document.createElement("button")
-                anderRezept.className ="andersRezept"
+                anderRezept.className = "andersRezept"
                 anderRezept.textContent = " Anderes Rezept"
                 tasten.append(anderRezept)
-                anderRezept.addEventListener("click",function(){
+                anderRezept.addEventListener("click", function () {
                     suchrandom()
                 })
                 function suchrandom() {
@@ -81,14 +79,14 @@ function gerichtinfo(url) {
                                 return
                             }
                             data.meals.forEach(meal => {
-                                window.location.href = `extra.html?strMeal=${meal.strMeal}`
+                                window.location.href = `extra.html?idMeal=${meal.idMeal}`
                             })
                         })
                         .catch(error => {
                             console.error(error)
                             kontainer2.textContent = "Die Rezepte konnten nicht geladen werden."
                         })
-                    }
+                }
                 const liste1 = document.createElement("ul")
                 const zutatenTitle = document.createElement("h2")
                 zutatenTitle.textContent = "Zutaten"

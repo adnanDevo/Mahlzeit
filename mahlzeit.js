@@ -22,9 +22,21 @@ function anfangseite() {
 }
 //suchfunktion --------------------------------------------------------
 suchbutton.addEventListener("click", function () {
+
     let searchText = suchfeld.value.trim()
-    let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
-    suchen(url, searchText)
+    if (searchText == "") {
+        kontainer.textContent = "Bitte geben Sie einen Suchbegriff ein."
+        const linkZurueck = document.createElement("a")
+        linkZurueck.href = "index.html"
+        linkZurueck.textContent = "Wieder zu Start Seite"
+        taste1.style.backgroundColor = "#dbf7c3"
+        kontainer.append(linkZurueck)
+    } else {
+        let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
+        suchen(url, searchText)
+
+    }
+
 })
 //überraschung funktion ------------------------------------------------------
 uberrasch.addEventListener("click", function () {
@@ -123,7 +135,7 @@ taste7.addEventListener("click", function () {
 })
 // Haupt-funktion --------------------------------------------------------------
 function suchen(ur, searchText, kategorie) {
-    if (searchText === "") {
+    if (searchText == "") {
         kontainer.textContent = "Bitte gib einen Suchbegriff ein."
     }
     fetch(ur)
@@ -136,49 +148,54 @@ function suchen(ur, searchText, kategorie) {
         .then(data => {
             kontainer.replaceChildren()
             if (!data.meals) {
-                kontainer.textContent = "Keine Rezepte gefunden. Bitte versuchen Sie ein anderer Name"
+                kontainer.textContent = "Keine Rezepte gefunden."
+                const linkZurueck = document.createElement("a")
+                linkZurueck.href = "index.html"
+                linkZurueck.textContent = "Wieder zu Start Seite"
+                taste1.style.backgroundColor = "#dbf7c3"
+                kontainer.append(linkZurueck)
                 return
             }
             const liste = data.meals.slice(0, 8)
             liste.forEach(meal => {
-                const card = document.createElement("article")
-                card.className = "recipe-card"
+                const kartee = document.createElement("article")
+                kartee.className = "rezeptKarte"
 
-                const image = document.createElement("img")
-                image.src = meal.strMealThumb
-                image.alt = meal.strMeal
-                image.className = "recipe-image"
+                const gBild = document.createElement("img")
+                gBild.src = meal.strMealThumb
+                gBild.alt = meal.strMeal
+                gBild.className = "rezeptBild"
                 const info = document.createElement("div")
-                info.className = "recipe-info"
+                info.className = "rezeptInfo"
 
-                const country = document.createElement("span")
-                country.className = "recipe-country"
-                country.textContent = meal.strArea || "Unknown country"
+                const gStadt = document.createElement("span")
+                gStadt.className = "rezeptLand"
+                gStadt.textContent = meal.strArea || "Unknown country"
 
-                const category = document.createElement("span")
-                category.className = "recipe-category"
-                category.textContent = meal.strCategory || kategorie
+                const gKategorie = document.createElement("span")
+                gKategorie.className = "rezeptKategorie"
+                gKategorie.textContent = meal.strCategory || kategorie
 
                 const details = document.createElement("div")
-                details.className = "recipe-details"
+                details.className = "rezeptDetails"
 
-                details.append(country, category)
+                details.append(gStadt, gKategorie)
 
                 const title = document.createElement("h2")
-                title.className = "recipe-title"
+                title.className = "rezeptTitle"
                 title.textContent = meal.strMeal
 
                 const link = document.createElement("a")
-                let mid = meal.strMeal
-                link.className = "recipe-link"
-                link.href = `extra.html?strMeal=${mid}`
-                link.textContent = "View Recipe →"
+                let mid = meal.idMeal
+                link.className = "rezeptLink"
+                link.href = `extra.html?idMeal=${mid}`
+                link.textContent = "Rezept Zeigen →"
 
                 info.append(details, title, link)
 
-                card.append(image, info)
+                kartee.append(gBild, info)
 
-                kontainer.appendChild(card)
+                kontainer.appendChild(kartee)
             })
         })
         .catch(error => {
@@ -186,7 +203,7 @@ function suchen(ur, searchText, kategorie) {
             kontainer.textContent = "Die Rezepte konnten nicht geladen werden."
         })
 }
-function suchrandom(){
+function suchrandom() {
     fetch("https://www.themealdb.com/api/json/v1/1/random.php")
         .then(response => {
             if (!response.ok) {
@@ -196,11 +213,11 @@ function suchrandom(){
         })
         .then(data => {
             if (!data.meals) {
-                kontainer.textContent = "Keine Rezepte gefunden. Bitte versuchen Sie ein anderer Name"
+                kontainer.textContent = "Keine Rezepte gefunden."
                 return
             }
             data.meals.forEach(meal => {
-                window.location.href= `extra.html?strMeal=${meal.strMeal}`
+                window.location.href = `extra.html?idMeal=${meal.idMeal}`
             })
         })
         .catch(error => {
