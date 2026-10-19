@@ -26,7 +26,7 @@ function gerichtinfo(url) {
         .then(data => {
             kontainer2.replaceChildren()
             if (!data.meals) {
-                kontainer.textContent = "Keine Rezepte gefunden. Bitte versuchen Sie ein anderer Name"
+                kontainer2.textContent = "Keine Rezepte gefunden. Bitte versuchen Sie ein anderer Name"
                 return
             }
             data.meals.forEach(ele => {
@@ -53,10 +53,12 @@ function gerichtinfo(url) {
                 name.textContent = ele.strMeal
                 title.append(name)
                 const film = document.createElement("a")
-                film.href = ele.strYoutube
                 film.textContent = " ▶ Video ansehen"
                 film.className = "film"
                 film.target = "_blank"
+                if(ele.strYoutube){
+                    film.href = ele.strYoutube
+                }
                 tasten.append(film)
                 const anderRezept = document.createElement("button")
                 anderRezept.className ="andersRezept"
@@ -84,7 +86,7 @@ function gerichtinfo(url) {
                         })
                         .catch(error => {
                             console.error(error)
-                            kontainer.textContent = "Die Rezepte konnten nicht geladen werden."
+                            kontainer2.textContent = "Die Rezepte konnten nicht geladen werden."
                         })
                     }
                 const liste1 = document.createElement("ul")

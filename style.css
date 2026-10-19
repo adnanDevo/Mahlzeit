@@ -35,8 +35,8 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 16px 5%;
-    background-color: rgb(29, 140, 181);
-    color: white;
+    background-color:  #F4F6F2;
+    color: rgb(42, 32, 32);
     border-bottom: 1px solid #DCE2D9;
 }
 header h1 {
@@ -50,8 +50,8 @@ footer {
     margin-top: 40px;
     padding: 24px;
     text-align: center;
-    background-color: rgb(29, 140, 181);
-    color: white;
+    background-color:  #F4F6F2;
+    color: rgb(42, 32, 32);
     font-size: 0.9rem;
     border-top: 1px solid #DCE2D9;
 }
