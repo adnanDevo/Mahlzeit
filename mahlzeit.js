@@ -16,7 +16,9 @@ const kontainer = document.querySelector("#kontainer")
 anfangseite()
 taste1.style.backgroundColor = "orange"
 function anfangseite() {
-    let searchText = ""
+    let Buchstaben = ["a","B","C","d","e","f","g","h","j","k","l","m","n","o","p","q","r","s","t","u","v","x","y","z"]
+    let index = Math.floor(Math.random() * Buchstaben.length)
+    let searchText = Buchstaben[index]
     let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
     suchen(url, searchText)
 }
@@ -34,6 +36,13 @@ suchbutton.addEventListener("click", function () {
     } else {
         let url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchText}`
         suchen(url, searchText)
+        taste1.style.backgroundColor = "#dbf7c3"
+        taste2.style.backgroundColor = "#dbf7c3"
+        taste3.style.backgroundColor = "#dbf7c3"
+        taste4.style.backgroundColor = "#dbf7c3"
+        taste5.style.backgroundColor = "#dbf7c3"
+        taste6.style.backgroundColor = "#dbf7c3"
+        taste7.style.backgroundColor = "#dbf7c3"
 
     }
 
@@ -170,7 +179,7 @@ function suchen(ur, searchText, kategorie) {
 
                 const gStadt = document.createElement("span")
                 gStadt.className = "rezeptLand"
-                gStadt.textContent = meal.strArea || "Unknown country"
+                gStadt.textContent = meal.strArea || "Unbakanntes Land"
 
                 const gKategorie = document.createElement("span")
                 gKategorie.className = "rezeptKategorie"

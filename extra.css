@@ -1,26 +1,32 @@
-
 * {
-    box-sizing: border-box;  
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 body {
     background-color: #F4F6F2;
     color: #1B2420;
     font-family: 'DM Sans', sans-serif;
     line-height: 1.5;
 }
-h1, h2, h3 {
+
+h1,
+h2,
+h3 {
     font-family: 'Bricolage Grotesque', sans-serif;
 }
+
 a {
     color: #1F4A3A;
 }
+
 hr {
-    display: none;          
+    display: none;
 }
+
 button {
-    min-height: 44px;         
+    min-height: 44px;
     padding: 0 20px;
     font-size: 1rem;
     border: 1px solid #DCE2D9;
@@ -28,6 +34,7 @@ button {
     background-color: white;
     cursor: pointer;
 }
+
 button:hover {
     opacity: 0.8;
 }
@@ -37,54 +44,64 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 16px 5%;
-    background-color: rgb(29, 140, 181);
-    color: white;
+    background-color: #F4F6F2;
+    color: rgb(42, 32, 32);
     border-bottom: 1px solid #DCE2D9;
 }
+
 header h1 {
     font-size: 1.5rem;
 }
+
 #oben {
     display: flex;
     gap: 28px;
 }
+
 footer {
     margin-top: 40px;
     padding: 24px;
     text-align: center;
-    background-color: rgb(29, 140, 181);
-    color: white;
+    background-color:  #F4F6F2;
+    color: rgb(42, 32, 32);
     font-size: 0.9rem;
     border-top: 1px solid #DCE2D9;
 }
+
 footer br {
     display: none;
 }
+
 main {
-    max-width: 1200px;        
-    margin: 0 auto;          
+    max-width: 1200px;
+    margin: 0 auto;
     padding: 32px 20px;
 }
+
 #inhalt {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto auto auto 1fr auto;   
+    grid-template-rows: auto auto auto auto 1fr auto;
     gap: 16px 40px;
     align-items: start;
 }
+
 .zurueck {
-    grid-column: 1 / -1;     
+    grid-column: 1 / -1;
     padding: 10px 0;
     font-weight: bold;
     text-decoration: none;
 }
+
 .zurueck:hover {
     text-decoration: underline;
 }
+
 #gerichtBild {
     grid-column: 1;
-    grid-row: 2 / 6;         
+    grid-row: 2 / 6;
 }
+
 #gerichtBild img {
     display: block;
     width: 100%;
@@ -92,29 +109,40 @@ main {
     object-fit: cover;
     border-radius: 20px;
 }
-#statdkategori, #title, #tasten, #zutaten {
-    grid-column: 2;          
+
+#statdkategori,
+#title,
+#tasten,
+#zutaten {
+    grid-column: 2;
 }
+
 #statdkategori {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
-.stadt, .gerichtKategorie {
+
+.stadt,
+.gerichtKategorie {
     padding: 3px 12px;
     font-size: 0.85rem;
     background-color: #E8F0E6;
     border-radius: 999px;
 }
+
 .gerichtname {
     font-size: 2.5rem;
 }
+
 #tasten {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
 }
-.film, .andersRezept {
+
+.film,
+.andersRezept {
     display: inline-block;
     padding: 12px 22px;
     font-weight: bold;
@@ -122,61 +150,74 @@ main {
     border-radius: 12px;
     cursor: pointer;
 }
+
 .film {
     background-color: #C93E22;
     border: 1px solid #C93E22;
     color: white;
 }
+
 .andersRezept {
     background-color: white;
     border: 1px solid #1F4A3A;
     color: #1F4A3A;
 }
-.film:hover, .andersRezept:hover {
+
+.film:hover,
+.andersRezept:hover {
     opacity: 0.8;
 }
 
-#zutaten, #zubereitung {
+#zutaten,
+#zubereitung {
     padding: 24px;
     background-color: white;
     border: 1px solid #DCE2D9;
     border-radius: 16px;
 }
+
 #zubereitung {
     grid-column: 1 / -1;
 }
-.zutatenTitle, .zubereitungTitle {
+
+.zutatenTitle,
+.zubereitungTitle {
     margin-bottom: 12px;
     font-size: 1.4rem;
 }
+
 #zutaten ul {
     list-style: none;
 }
+
 #zutaten li {
     padding: 10px 0;
     border-top: 1px solid #DCE2D9;
 }
+
 #zubereitung ol {
-    list-style: none;            
-    counter-reset: schritt;      
+    list-style: none;
+    counter-reset: schritt;
 }
+
 #zubereitung li {
-    display: flex;               
-    align-items: flex-start;     
-    gap: 14px;                   
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
     margin-bottom: 14px;
-    counter-increment: schritt; 
+    counter-increment: schritt;
 }
+
 #zubereitung li::before {
-    content: counter(schritt);  
-    flex-shrink: 0;              
+    content: counter(schritt);
+    flex-shrink: 0;
     width: 32px;
     height: 32px;
     display: flex;
-    align-items: center;         
-    justify-content: center;     
-    border-radius: 50%;          
-    background-color: #1F4A3A;   
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #1F4A3A;
     color: white;
     font-size: 0.9rem;
     font-weight: bold;
@@ -184,31 +225,40 @@ main {
 
 @media (max-width: 800px) {
     #inhalt {
-        grid-template-columns: 1fr;    
+        grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
-    #inhalt > * {                      
+
+    #inhalt>* {
         grid-column: 1;
         grid-row: auto;
     }
+
     #gerichtBild img {
         height: 260px;
     }
+
     .gerichtname {
         font-size: 2rem;
     }
 }
+
 @media (max-width: 600px) {
     #oben {
         display: none;
     }
+
     #tasten {
-        flex-direction: column;          
+        flex-direction: column;
     }
-    .film, .andersRezept {
+
+    .film,
+    .andersRezept {
         text-align: center;
     }
-    #zutaten, #zubereitung {
+
+    #zutaten,
+    #zubereitung {
         padding: 16px;
     }
 }
